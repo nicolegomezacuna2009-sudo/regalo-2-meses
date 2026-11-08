@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestros 2 meses ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #f45c61, #ffe1e9, #ee6262);
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.carta {
+    background: white;
+    padding: 35px 20px;
+    border-radius: 25px;
+    max-width: 480px;
+    width: 100%;
+    margin: 20px auto;
+    box-shadow: 0 10px 35px #c21818;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #c21818;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #874444;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 15px 0;
+}
+
+/* CAJA DE REGALO */
+
+.regalo {
+    width: 190px;
+    height: 155px;
+    margin: 65px auto 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.base {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 170px;
+    height: 110px;
+    background: #e60026;
+    border-radius: 5px;
+    box-shadow: 0 8px 15px #a00018;
+}
+
+.tapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 190px;
+    height: 42px;
+    background: #b80020;
+    border-radius: 6px;
+    z-index: 3;
+    transition: transform 1s ease;
+}
+
+.cinta {
+    position: absolute;
+    left: 77px;
+    bottom: 0;
+    width: 36px;
+    height: 110px;
+    background: #ffd700;
+    z-index: 2;
+}
+
+.cinta-tapa {
+    position: absolute;
+    left: 77px;
+    top: 0;
+    width: 36px;
+    height: 42px;
+    background: #ffd700;
+    z-index: 4;
+}
+
+.lazo {
+    position: absolute;
+    top: -28px;
+    left: 55px;
+    width: 80px;
+    height: 45px;
+    z-index: 5;
+}
+
+.lazo::before,
+.lazo::after {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 30px;
+    border: 9px solid #ffd700;
+    border-radius: 50%;
+}
+
+.lazo::before {
+    left: 0;
+    transform: rotate(25deg);
+}
+
+.lazo::after {
+    right: 0;
+    transform: rotate(-25deg);
+}
+
+.regalo.abierto .tapa {
+    transform: translate(-35px, -65px) rotate(-30deg);
+}
+
+/* MENSAJE */
+
+#mensaje {
+    display: none;
+    margin-top: 35px;
+    color: #890406;
+    font-size: 19px;
+    line-height: 1.8;
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.instruccion {
+    color: #c21818;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.corazon {
+    position: fixed;
+    bottom: -30px;
+    animation: subir 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes subir {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+
+    <h1>¡Felices 2 meses, mi amor! ❤️</h1>
+
+    <p>Hoy quiero regalarte algo muy especial.</p>
+
+    <p>Preparé una pequeña sorpresa para ti.</p>
+
+    <div class="regalo" id="regalo" onclick="abrirRegalo()">
+
+        <div class="lazo"></div>
+        <div class="tapa"></div>
+        <div class="cinta-tapa"></div>
+        <div class="base"></div>
+        <div class="cinta"></div>
+
+    </div>
+
+    <p class="instruccion">🎁 Toca la caja para abrir tu regalo 🎁</p>
+
+    <div id="mensaje">
+
+        <h2>¡SORPRESA! ❤️</h2>
+
+        <p>
+        ¡Felices dos meses, mi ingeniero!
+        </p>
+
+        <p>
+        Gracias por cada momento bonito,
+        por tu cariño, tu atención y por
+        formar parte de mi vida.
+        </p>
+
+        <p>
+        Estos dos meses son una historia
+        que me alegra estar construyendo contigo.
+        </p>
+
+        <p>
+        Deseo que sigamos compartiendo
+        muchos momentos especiales.
+        </p>
+
+        <h2>¡TE AMO MUCHO! 💖</h2>
+
+        <p>Con mucho cariño, para ti. 🌹</p>
+
+    </div>
+
+</div>
+
+<script>
+
+function abrirRegalo() {
+    const regalo = document.getElementById("regalo");
+    const mensaje = document.getElementById("mensaje");
+
+    regalo.classList.add("abierto");
+    mensaje.style.display = "block";
+    document.querySelector(".instruccion").style.display = "none";
+}
+
+function crearCorazon() {
+    const corazon = document.createElement("div");
+
+    corazon.className = "corazon";
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (15 + Math.random() * 25) + "px";
+    corazon.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => corazon.remove(), 7000);
+}
+
+setInterval(crearCorazon, 400);
+
+</script>
+
+</body>
+</html>
